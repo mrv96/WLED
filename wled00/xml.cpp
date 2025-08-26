@@ -328,7 +328,7 @@ void getSettingsJS(byte subPage, char* dest)
     } else if (!enable_espnow_remote)
     {
       sappends('m',SET_F("(\"rlid\")[0]"),(char*)F("(Enable remote to listen)"));
-    } else 
+    } else
     {
       sappends('m',SET_F("(\"rlid\")[0]"),(char*)F("None"));
     }
