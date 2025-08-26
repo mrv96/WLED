@@ -572,6 +572,12 @@ bool deserializeConfig(JsonObject doc, bool fromFS) {
     CJSON(DMXFixtureMap[i],dmx_fixmap[i]);
   }
 
+  JsonArray dmx_chsval = dmx[F("chsval")];
+  for (int i = 0; i < dmx_chsval.size(); i++) {
+    if (i > 14) break;
+    CJSON(DMXChannelsValue[i],dmx_chsval[i]);
+  }
+
   CJSON(e131ProxyUniverse, dmx[F("e131proxy")]);
   #endif
 
@@ -1005,6 +1011,11 @@ void serializeConfig() {
   JsonArray dmx_fixmap = dmx.createNestedArray(F("fixmap"));
   for (byte i = 0; i < 15; i++) {
     dmx_fixmap.add(DMXFixtureMap[i]);
+  }
+
+  JsonArray dmx_chsval = dmx.createNestedArray(F("chsval"));
+  for (unsigned i = 0; i < 15; i++) {
+    dmx_chsval.add(DMXChannelsValue[i]);
   }
 
   dmx[F("e131proxy")] = e131ProxyUniverse;

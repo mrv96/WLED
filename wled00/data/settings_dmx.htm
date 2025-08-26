@@ -12,7 +12,17 @@
 	function GCH(num) {
 		d.getElementById('dmxchannels').innerHTML += "";
 		for (i=0;i<num;i++) {
-			d.getElementById('dmxchannels').innerHTML += "<span id=CH" + (i+1) + "s >Channel " + (i+1) + ": <select name=CH" + (i+1) + " id=\"CH" + (i+1) + "\"><option value=0>Set to 0</option><option value=1>Red</option><option value=2>Green</option><option value=3>Blue</option><option value=4>White</option><option value=5>Shutter (Brightness)</option><option value=6>Set to 255</option></select></span><br />\n";
+			d.getElementById('dmxchannels').innerHTML += "<span id=CH" + (i+1) + "s >Channel " + (i+1) + ": <select name=CH" + (i+1) + " id=\"CH" + (i+1) + "\"><option value=0>Set to </option><option value=1>Red</option><option value=2>Green</option><option value=3>Blue</option><option value=4>White</option><option value=5>Shutter (Brightness)</option></select><input name=DV" + (i+1) + " id=\"DV" + (i+1) + "\" type=number min=0 max=255></span><br />\n";
+		}
+		for (i=0;i<num;i++) {
+			const dv = d.getElementById("DV" + (i+1));
+			d.getElementById("CH" + (i+1)).addEventListener("change", (event) => {
+				if (event.target.value == 0) {
+					dv.style.display = "inline";
+				} else {
+					dv.style.display = "none";
+				}
+			});
 		}
 	}
 	function mMap(){
@@ -24,14 +34,17 @@
 			d.getElementById("gapwarning").style.display="none";
 		}
 		for (i=0;i<15;i++) {
+			const ch = d.getElementById("CH" + (i+1));
 			if (i>=numCh) {
 				d.getElementById("CH"+(i+1) + "s").style.opacity = "0.5";
-				d.getElementById("CH"+(i+1)).disabled = true;
-				
+				ch.disabled = true;
+				d.getElementById("DV"+(i+1)).disabled = true;
 			} else {
 				d.getElementById("CH"+(i+1) + "s").style.opacity = "1";
-				d.getElementById("CH"+(i+1)).disabled = false;
+				ch.disabled = false;
+				d.getElementById("DV"+(i+1)).disabled = false;
 			}
+			ch.dispatchEvent(new Event("change"));
 		}
 	}
 	// https://www.educative.io/edpresso/how-to-dynamically-load-a-js-file-in-javascript

@@ -519,6 +519,10 @@ String dmxProcessor(const String& var)
         mapJS += String(DMXFixtureMap[i]) + ",";
       }
       mapJS += "0];";
+      for (int i=0;i<15;i++) {
+        mapJS += String(DMXChannelsValue[i]) + ",";
+      }
+      mapJS += "0];";
     }
   #endif
 

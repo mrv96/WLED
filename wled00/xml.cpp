@@ -685,6 +685,22 @@ void getSettingsJS(byte subPage, char* dest)
     sappend('i',SET_F("CH13"),DMXFixtureMap[12]);
     sappend('i',SET_F("CH14"),DMXFixtureMap[13]);
     sappend('i',SET_F("CH15"),DMXFixtureMap[14]);
+
+    sappend('v',SET_F("DV1"),DMXChannelsValue[0]);
+    sappend('v',SET_F("DV2"),DMXChannelsValue[1]);
+    sappend('v',SET_F("DV3"),DMXChannelsValue[2]);
+    sappend('v',SET_F("DV4"),DMXChannelsValue[3]);
+    sappend('v',SET_F("DV5"),DMXChannelsValue[4]);
+    sappend('v',SET_F("DV6"),DMXChannelsValue[5]);
+    sappend('v',SET_F("DV7"),DMXChannelsValue[6]);
+    sappend('v',SET_F("DV8"),DMXChannelsValue[7]);
+    sappend('v',SET_F("DV9"),DMXChannelsValue[8]);
+    sappend('v',SET_F("DV10"),DMXChannelsValue[9]);
+    sappend('v',SET_F("DV11"),DMXChannelsValue[10]);
+    sappend('v',SET_F("DV12"),DMXChannelsValue[11]);
+    sappend('v',SET_F("DV13"),DMXChannelsValue[12]);
+    sappend('v',SET_F("DV14"),DMXChannelsValue[13]);
+    sappend('v',SET_F("DV15"),DMXChannelsValue[14]);
   }
   #endif
 
