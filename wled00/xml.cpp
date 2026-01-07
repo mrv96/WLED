@@ -411,7 +411,7 @@ void getSettingsJS(byte subPage, Print& settingsScript)
 #ifndef WLED_DISABLE_INFRARED
     printSetFormValue(settingsScript,PSTR("IR"),irPin);
     printSetFormValue(settingsScript,PSTR("IT"),irEnabled);
-#endif    
+#endif
     printSetFormCheckbox(settingsScript,PSTR("MSO"),!irApplyToAllSelected);
   }
 
@@ -634,13 +634,13 @@ void getSettingsJS(byte subPage, Print& settingsScript)
     printSetFormValue(settingsScript,PSTR("CS"),DMXStart);
     printSetFormValue(settingsScript,PSTR("SL"),DMXStartLED);
 
-    for (int i = 0; i < MAX_CHANNELS_PER_FIXTURE; i++) {
+    for (int i = 0; i < WLED_DMX_MAX_CHANNELS_PER_FIXTURE; i++) {
       char buf[5];
       snprintf_P(buf, sizeof(buf), PSTR("CH%d"), i+1);
       printSetFormIndex(settingsScript,buf,DMXFixtureMap[i]);
     }
 
-    for (int i = 0; i < MAX_CHANNELS_PER_FIXTURE; i++) {
+    for (int i = 0; i < WLED_DMX_MAX_CHANNELS_PER_FIXTURE; i++) {
       char buf[5];
       snprintf_P(buf, sizeof(buf), PSTR("DV%d"), i+1);
       printSetFormValue(settingsScript,buf,DMXChannelsValue[i]);
